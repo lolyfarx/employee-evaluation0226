@@ -11,12 +11,11 @@ body {
 }
 
 .wrapper {
-    display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px;
+    display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 15px;
 }
 
-/* تعديل خلفية شاشة الدخول لتكون مثل الكوبون */
 .main-bg {
-    background: url('background.jpg') no-repeat center center fixed;
+    background: url('background.jpg') no-repeat center top fixed;
     background-size: cover;
 }
 
@@ -25,6 +24,10 @@ body {
     width: 100%; max-width: 480px;
     padding: 30px; border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    
+    /* الإزاحة المطلوبة لظهور الشعار في الخلفية */
+    margin-top: 1.5cm; 
+    margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
@@ -39,6 +42,13 @@ body {
 .input-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--navy); }
 .input-group input, .input-group select {
     width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; font-size: 16px; box-sizing: border-box;
+}
+
+/* تنسيق حقل الصور */
+input[type="file"] {
+    background: #f8f9fa;
+    padding: 10px;
+    border: 1px dashed var(--navy);
 }
 
 .criteria-card {

@@ -81,6 +81,8 @@ document.getElementById('evalForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzno3g9LVs-PIL-XxXS0gpjFnoT_ORAZuqgDaSyzHYzihh1RuEscnJAVzH-PoGD-FnPZQ/exec'; 
     const btn = document.querySelector('.btn-submit');
+    const photoInput = document.getElementById('evalPhotos');
+
     btn.disabled = true;
     btn.innerText = "جاري الحفظ...";
 
@@ -91,16 +93,24 @@ document.getElementById('evalForm').addEventListener('submit', function(e) {
     params.append('job', document.getElementById('empJob').value);
     params.append('total', document.getElementById('totalScore').innerText);
     params.append('status', document.getElementById('ratingText').innerText);
+    
+    // إرسال عدد الصور المرفقة للشيت
+    params.append('images', photoInput.files.length > 0 ? photoInput.files.length + " صور" : "لا يوجد");
+
     scores.forEach((val, i) => params.append('s' + (i + 1), val));
 
     fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: params })
     .then(() => {
-        alert("تم حفظ التقييم بنجاح! يمكنك الآن تقييم موظف آخر.");
+        alert("تم حفظ التقييم بنجاح!");
+        
+        // تصفير البيانات بدون تسجيل خروج
         document.getElementById('empName').value = "";
         document.getElementById('empJob').value = "";
         document.getElementById('criteriaList').innerHTML = "";
         document.getElementById('totalScore').innerText = "0";
         document.getElementById('progressBar').style.width = "0%";
+        photoInput.value = ""; // تصفير حقل الصور
+        
         btn.disabled = false;
         btn.innerText = "إرسال تقييم موظف جديد";
     })
