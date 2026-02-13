@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام تقييم أداء فروع النهدي</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="loginSection" class="wrapper">
+    <div class="container login-card">
+        <h1 class="main-title">نظام المتابعة الرقمي</h1>
+        <p class="subtitle">يرجى تسجيل الدخول للبدء في التقييم الميداني</p>
+        <div class="input-group">
+            <label>اسم المتابع</label>
+            <input type="text" id="userInput" placeholder="مثلاً: متابع1">
+        </div>
+        <div class="input-group">
+            <label>كلمة المرور</label>
+            <input type="password" id="passInput" placeholder="••••••••">
+        </div>
+        <button onclick="handleLogin()" class="btn-main">دخول للنظام</button>
+    </div>
+</div>
+
+<div id="evalSection" class="wrapper" style="display:none;">
+    <div class="container main-card">
+        <div class="header-eval">
+            <span id="activeMgr">المقيم: </span>
+            <button onclick="location.reload()" class="btn-logout">خروج</button>
+        </div>
+        
+        <h2 class="title">نموذج تقييم الموظف</h2>
+
+        <div class="info-row">
+            <div class="input-group">
+                <label>اسم الموظف</label>
+                <input type="text" id="empName" placeholder="الاسم الكامل">
+            </div>
+            <div class="input-group">
+                <label>الوظيفة</label>
+                <select id="empJob" onchange="generateCriteria()">
+                    <option value="">-- اختر الوظيفة --</option>
+                    <option value="manager">مدير فرع</option>
+                    <option value="sales">بائع</option>
+                    <option value="worker">عامل</option>
+                    <option value="driver">سائق</option>
+                </select>
+            </div>
+        </div>
+
+        <form id="evalForm">
+            <div id="criteriaList">
+                </div>
+
+            <div class="final-score-box">
+                <div class="score-text">
+                    <span>التقييم النهائي: <strong id="totalScore">0</strong> / 100</span>
+                    <span id="ratingText">الحالة: -</span>
+                </div>
+                <div class="progress-container">
+                    <div id="progressBar"></div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">إرسال التقييم النهائي</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
