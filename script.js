@@ -3,34 +3,10 @@ const users = {
 };
 
 const allCriteria = {
-    manager: [
-        "توزيع ومتابعة الأدوار يوميا على فريق العمل", "نسبة المبيعات/تحقيق الهدف البيعى/التحديات",
-        "التميز في طلب المنتجات / المشتريات", "مستوي إدارة المخزون الموجود",
-        "التميز في تصريف الراكد", "التعاون مع الفروع في المخزون (تدوير المخزون)",
-        "نظافة (إطارات /ارضيات/حوائط/معدات/حمامات)", "ترتيب (إطارات/معدات/أدوات / اثاث / ملفات)",
-        "مستوى الخدمة المقدمة بالفرع", "مستوى رضاء العملاء عن الفرع"
-    ],
-    sales: [
-        "مستوي المبيعات اليومية/التحديات", "تحقيق الهدف البيعي /الشهر",
-        "المشاركة في طلب الأصناف الصحيحة", "المشاركة في إدارة المخزون",
-        "التعاون في الطلب من الفروع (تدوير المخزون)", "التعاون مع مدير الفرع إداريا",
-        "التعاون مع فريق العمل", "مستوى خدمة العميل قبل وأثناء وبعد البيع",
-        "دعم ولاء العميل للنهدى", "كسب عملاء جدد"
-    ],
-    worker: [
-        "مستوى جودة الخدمة المقدمة", "الوقت المستغرق سريع/مناسب/بطئ",
-        "مستوى العناية بالمعدة في العمل", "مستوى نظافة المعدة والأدوات",
-        "الالتزام بقواعد العمل داخل الفرع", "التعاون مع ادارة الفرع",
-        "التعاون مع فريق العمل", "الالتزام بالنظافة الشخصية والزي",
-        "طريقة التعامل مع العميل قبل/اثناء/بعد الخدمة", "مستوى رضاء العملاء عن الخدمة المقدمة"
-    ],
-    driver: [
-        "عدد مرات التوصيل /تحديات", "جودة قيادة المركبة",
-        "العناية بالصيانة الدورية بالمركبة", "نسبة المخالفات المرورية",
-        "الالتزام بالتعليمات وقواعد العمل", "التعاون مع فريق العمل",
-        "العناية بنظافة المركبة", "العناية بالنظافة الشخصية والزي",
-        "مستوى رضاء خدمة العملاء", "خدمات اخرى"
-    ]
+    manager: ["توزيع ومتابعة الأدوار يوميا على فريق العمل", "نسبة المبيعات/تحقيق الهدف البيعى/التحديات", "التميز في طلب المنتجات / المشتريات", "مستوي إدارة المخزون الموجود", "التميز في تصريف الراكد", "التعاون مع الفروع في المخزون (تدوير المخزون)", "نظافة (إطارات /ارضيات/حوائط/معدات/حمامات)", "ترتيب (إطارات/معدات/أدوات / اثاث / ملفات)", "مستوى الخدمة المقدمة بالفرع", "مستوى رضاء العملاء عن الفرع"],
+    sales: ["مستوي المبيعات اليومية/التحديات", "تحقيق الهدف البيعي /الشهر", "المشاركة في طلب الأصناف الصحيحة", "المشاركة في إدارة المخزون", "التعاون في الطلب من الفروع (تدوير المخزون)", "التعاون مع مدير الفرع إداريا", "التعاون مع فريق العمل", "مستوى خدمة العميل قبل وأثناء وبعد البيع", "دعم ولاء العميل للنهدى", "كسب عملاء جدد"],
+    worker: ["مستوى جودة الخدمة المقدمة", "الوقت المستغرق سريع/مناسب/بطئ", "مستوى العناية بالمعدة في العمل", "مستوى نظافة المعدة والأدوات", "الالتزام بقواعد العمل داخل الفرع", "التعاون مع ادارة الفرع", "التعاون مع فريق العمل", "الالتزام بالنظافة الشخصية والزي", "طريقة التعامل مع العميل قبل/اثناء/بعد الخدمة", "مستوى رضاء العملاء عن الخدمة المقدمة"],
+    driver: ["عدد مرات التوصيل /تحديات", "جودة قيادة المركبة", "العناية بالصيانة الدورية بالمركبة", "نسبة المخالفات المرورية", "الالتزام بالتعليمات وقواعد العمل", "التعاون مع فريق العمل", "العناية بنظافة المركبة", "العناية بالنظافة الشخصية والزي", "مستوى رضاء خدمة العملاء", "خدمات اخرى"]
 };
 
 let currentMgr = "";
@@ -79,43 +55,62 @@ function calculate() {
 
 document.getElementById('evalForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzno3g9LVs-PIL-XxXS0gpjFnoT_ORAZuqgDaSyzHYzihh1RuEscnJAVzH-PoGD-FnPZQ/exec'; 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx51EmYSBFjXXacsSZBhxD-2gdJZk8G5zDZLmXrneZEYEtTF2FMNd4YrN-bwrlfq8RHJw/exec'; 
     const btn = document.querySelector('.btn-submit');
     const photoInput = document.getElementById('evalPhotos');
-
-    btn.disabled = true;
-    btn.innerText = "جاري الحفظ...";
-
-    const scores = Array.from(document.querySelectorAll('.score-val')).map(s => s.value);
-    const params = new URLSearchParams();
-    params.append('manager', currentMgr);
-    params.append('employee', document.getElementById('empName').value);
-    params.append('job', document.getElementById('empJob').value);
-    params.append('total', document.getElementById('totalScore').innerText);
-    params.append('status', document.getElementById('ratingText').innerText);
     
-    // إرسال عدد الصور المرفقة للشيت
-    params.append('images', photoInput.files.length > 0 ? photoInput.files.length + " صور" : "لا يوجد");
+    btn.disabled = true;
+    btn.innerText = "جاري الحفظ ورفع الصور...";
 
-    scores.forEach((val, i) => params.append('s' + (i + 1), val));
+    const sendData = (fileData = null, fileName = "", mimeType = "") => {
+        const scores = Array.from(document.querySelectorAll('.score-val')).map(s => s.value);
+        const params = new URLSearchParams();
+        params.append('manager', currentMgr);
+        params.append('employee', document.getElementById('empName').value);
+        params.append('job', document.getElementById('empJob').value);
+        params.append('total', document.getElementById('totalScore').innerText);
+        params.append('status', document.getElementById('ratingText').innerText);
+        
+        if (fileData) {
+            params.append('fileData', fileData);
+            params.append('fileName', fileName);
+            params.append('mimeType', mimeType);
+        }
 
-    fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: params })
-    .then(() => {
-        alert("تم حفظ التقييم بنجاح!");
-        
-        // تصفير البيانات بدون تسجيل خروج
-        document.getElementById('empName').value = "";
-        document.getElementById('empJob').value = "";
-        document.getElementById('criteriaList').innerHTML = "";
-        document.getElementById('totalScore').innerText = "0";
-        document.getElementById('progressBar').style.width = "0%";
-        photoInput.value = ""; // تصفير حقل الصور
-        
-        btn.disabled = false;
-        btn.innerText = "إرسال تقييم موظف جديد";
-    })
-    .catch(() => {
-        alert("خطأ في الاتصال");
-        btn.disabled = false;
-    });
+        scores.forEach((val, i) => params.append('s' + (i + 1), val));
+
+        fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: params })
+        .then(() => {
+            alert("تم حفظ التقييم ورفع الصور بنجاح!");
+            resetForm();
+        })
+        .catch(() => {
+            alert("خطأ في الاتصال");
+            btn.disabled = false;
+        });
+    };
+
+    if (photoInput.files.length > 0) {
+        const file = photoInput.files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const base64Data = e.target.result.split(',')[1];
+            sendData(base64Data, file.name, file.type);
+        };
+        reader.readAsDataURL(file);
+    } else {
+        sendData();
+    }
 });
+
+function resetForm() {
+    const btn = document.querySelector('.btn-submit');
+    document.getElementById('empName').value = "";
+    document.getElementById('empJob').value = "";
+    document.getElementById('criteriaList').innerHTML = "";
+    document.getElementById('totalScore').innerText = "0";
+    document.getElementById('progressBar').style.width = "0%";
+    document.getElementById('evalPhotos').value = "";
+    btn.disabled = false;
+    btn.innerText = "إرسال تقييم موظف جديد";
+}

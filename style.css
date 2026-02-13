@@ -25,9 +25,9 @@ body {
     padding: 30px; border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     
-    /* الإزاحة المطلوبة لظهور الشعار في الخلفية */
-    margin-top: 1.5cm; 
-    margin-bottom: 30px;
+    /* الإزاحة المطلوبة لظهور شعار الشركة من الأعلى */
+    margin-top: 2.5cm; 
+    margin-bottom: 40px;
 }
 
 @media (min-width: 768px) {
@@ -44,12 +44,7 @@ body {
     width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; font-size: 16px; box-sizing: border-box;
 }
 
-/* تنسيق حقل الصور */
-input[type="file"] {
-    background: #f8f9fa;
-    padding: 10px;
-    border: 1px dashed var(--navy);
-}
+input[type="file"] { background: #f8f9fa; border: 1px dashed var(--navy); padding: 10px; }
 
 .criteria-card {
     background: #f9f9f9; padding: 12px 15px; border-radius: 12px; margin-bottom: 10px;
