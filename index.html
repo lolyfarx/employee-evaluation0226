@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نظام تقييم أداء فروع النهدي</title>
+    <title>نظام تقييم الأداء - النهدي</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div id="loginSection" class="wrapper">
+<div id="loginSection" class="wrapper main-bg">
     <div class="container login-card">
         <h1 class="main-title">نظام المتابعة الرقمي</h1>
-        <p class="subtitle">يرجى تسجيل الدخول للبدء في التقييم الميداني</p>
+        <p class="subtitle">سجل الدخول للبدء في التقييم الميداني</p>
         <div class="input-group">
             <label>اسم المتابع</label>
             <input type="text" id="userInput" placeholder="مثلاً: متابع1">
@@ -29,11 +29,9 @@
     <div class="container main-card">
         <div class="header-eval">
             <span id="activeMgr">المقيم: </span>
-            <button onclick="location.reload()" class="btn-logout">خروج</button>
+            <button onclick="location.reload()" class="btn-logout">تسجيل خروج</button>
         </div>
-        
         <h2 class="title">نموذج تقييم الموظف</h2>
-
         <div class="info-row">
             <div class="input-group">
                 <label>اسم الموظف</label>
@@ -50,22 +48,16 @@
                 </select>
             </div>
         </div>
-
         <form id="evalForm">
-            <div id="criteriaList">
-                </div>
-
+            <div id="criteriaList"></div>
             <div class="final-score-box">
                 <div class="score-text">
                     <span>التقييم النهائي: <strong id="totalScore">0</strong> / 100</span>
                     <span id="ratingText">الحالة: -</span>
                 </div>
-                <div class="progress-container">
-                    <div id="progressBar"></div>
-                </div>
+                <div class="progress-container"><div id="progressBar"></div></div>
             </div>
-
-            <button type="submit" class="btn-submit">إرسال التقييم النهائي</button>
+            <button type="submit" class="btn-submit">إرسال تقييم الموظف الحالي</button>
         </form>
     </div>
 </div>

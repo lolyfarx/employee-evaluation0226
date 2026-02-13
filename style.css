@@ -1,25 +1,30 @@
 :root {
     --navy: #1a237e;
     --orange: #ff6600;
-    --bg: #f8f9fa;
-    --success: #2e7d32;
-    --warning: #fbc02d;
-    --danger: #c62828;
+    --bg-light: #f8f9fa;
 }
 
 body {
     font-family: 'Cairo', sans-serif;
-    background-color: var(--bg);
-    margin: 0; direction: rtl;
+    margin: 0; padding: 0; direction: rtl;
+    background-color: var(--bg-light);
 }
 
 .wrapper {
     display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px;
 }
 
+/* تعديل خلفية شاشة الدخول لتكون مثل الكوبون */
+.main-bg {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
 .container {
-    background: #fff; width: 100%; max-width: 480px;
-    padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, 0.98);
+    width: 100%; max-width: 480px;
+    padding: 30px; border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
 }
 
 @media (min-width: 768px) {
@@ -28,7 +33,7 @@ body {
 }
 
 .main-title { color: var(--navy); text-align: center; margin-bottom: 5px; font-weight: 900; }
-.subtitle { text-align: center; color: #777; font-size: 14px; margin-bottom: 25px; }
+.subtitle { text-align: center; color: #555; margin-bottom: 25px; }
 
 .input-group { margin-bottom: 15px; }
 .input-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--navy); }
@@ -37,28 +42,21 @@ body {
 }
 
 .criteria-card {
-    background: #fafafa; padding: 15px; border-radius: 12px; margin-bottom: 10px;
-    display: flex; justify-content: space-between; align-items: center;
-    border-right: 6px solid var(--navy); transition: 0.3s;
+    background: #f9f9f9; padding: 12px 15px; border-radius: 12px; margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center; border-right: 5px solid var(--navy);
 }
 
-.criteria-card span { flex: 1; font-size: 14px; font-weight: bold; color: #444; margin-left: 10px; }
-.criteria-card select { width: 70px; border-color: var(--navy); padding: 5px; }
+.criteria-card span { flex: 1; font-size: 14px; font-weight: bold; color: #333; }
+.criteria-card select { width: 70px; padding: 5px; border-radius: 5px; border: 1px solid var(--navy); }
 
-.final-score-box {
-    background: var(--navy); color: white; padding: 20px; border-radius: 15px; margin-top: 25px;
-}
-
+.final-score-box { background: var(--navy); color: white; padding: 20px; border-radius: 15px; margin-top: 25px; }
 .score-text { display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; }
+.progress-container { background: rgba(255,255,255,0.2); height: 10px; border-radius: 5px; margin-top: 15px; overflow: hidden; }
+#progressBar { background: var(--orange); width: 0%; height: 100%; transition: 0.5s; }
 
-.progress-container { background: rgba(255,255,255,0.2); height: 12px; border-radius: 6px; margin-top: 15px; overflow: hidden; }
-#progressBar { background: var(--orange); width: 0%; height: 100%; transition: 0.5s ease; }
-
-.btn-main, .btn-submit {
-    width: 100%; padding: 15px; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer;
-}
+.btn-main, .btn-submit { width: 100%; padding: 15px; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; }
 .btn-main { background: var(--navy); color: white; }
 .btn-submit { background: var(--orange); color: white; margin-top: 20px; }
 
-.header-eval { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
-.btn-logout { background: #e53935; color: white; border: none; padding: 6px 15px; border-radius: 8px; cursor: pointer; }
+.header-eval { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.btn-logout { background: #d32f2f; color: white; border: none; padding: 5px 15px; border-radius: 8px; cursor: pointer; }
