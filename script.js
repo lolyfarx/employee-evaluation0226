@@ -55,7 +55,7 @@ function calculate() {
 
 document.getElementById('evalForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwjr0vjHY-S7WZme8KctxWPT3AI72cTkbSyae8Xzt2Yjdyz6BITa_6H9lDFXjNd24Q_UQ/exec'; 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby-C-Bi9n8-uD2UutPrVgg9XT5fFm0SC1Ay_HF2B3hd6n289Iu0Z8MdV2WBBy1LxvaNzA/exec'; 
     const btn = document.querySelector('.btn-submit');
     const photoInput = document.getElementById('evalPhotos');
     
