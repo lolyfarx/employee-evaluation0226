@@ -10,6 +10,7 @@ const allCriteria = {
 };
 
 let currentMgr = "";
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwYsptQe7mf3ZSdwGRvBztqe81P0Syq54jw0mBb6HtQ57qgEIf-CAInR7bnW-f6BjDyeQ/exec'; 
 
 function handleLogin() {
     const u = document.getElementById('userInput').value;
@@ -55,14 +56,13 @@ function calculate() {
 
 document.getElementById('evalForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const scriptURL = 'https://script.google.com/macros/s/AKfycby-C-Bi9n8-uD2UutPrVgg9XT5fFm0SC1Ay_HF2B3hd6n289Iu0Z8MdV2WBBy1LxvaNzA/exec'; 
     const btn = document.querySelector('.btn-submit');
     const photoInput = document.getElementById('evalPhotos');
     
     btn.disabled = true;
     btn.innerText = "جاري الحفظ ورفع الصور...";
 
-    const sendData = (fileData = null, fileName = "", mimeType = "") => {
+    const sendData = (fileBase64 = "", fileName = "", mimeType = "") => {
         const scores = Array.from(document.querySelectorAll('.score-val')).map(s => s.value);
         const params = new URLSearchParams();
         params.append('manager', currentMgr);
@@ -70,22 +70,21 @@ document.getElementById('evalForm').addEventListener('submit', function(e) {
         params.append('job', document.getElementById('empJob').value);
         params.append('total', document.getElementById('totalScore').innerText);
         params.append('status', document.getElementById('ratingText').innerText);
-        
-        if (fileData) {
-            params.append('fileData', fileData);
-            params.append('fileName', fileName);
-            params.append('mimeType', mimeType);
-        }
+        params.append('fileData', fileBase64);
+        params.append('fileName', fileName);
+        params.append('mimeType', mimeType);
 
         scores.forEach((val, i) => params.append('s' + (i + 1), val));
 
-        fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: params })
-        .then(() => {
-            alert("تم حفظ التقييم ورفع الصور بنجاح!");
-            resetForm();
+        // تصحيح: الإرسال بدون no-cors للحصول على استجابة
+        fetch(scriptURL, { method: 'POST', body: params })
+        .then(res => res.text())
+        .then(response => {
+            alert("تم حفظ التقييم بنجاح!");
+            location.reload(); 
         })
-        .catch(() => {
-            alert("خطأ في الاتصال");
+        .catch(err => {
+            alert("حدث خطأ في الاتصال، تأكد من إعدادات النشر في جوجل سكريبت");
             btn.disabled = false;
         });
     };
@@ -102,15 +101,3 @@ document.getElementById('evalForm').addEventListener('submit', function(e) {
         sendData();
     }
 });
-
-function resetForm() {
-    const btn = document.querySelector('.btn-submit');
-    document.getElementById('empName').value = "";
-    document.getElementById('empJob').value = "";
-    document.getElementById('criteriaList').innerHTML = "";
-    document.getElementById('totalScore').innerText = "0";
-    document.getElementById('progressBar').style.width = "0%";
-    document.getElementById('evalPhotos').value = "";
-    btn.disabled = false;
-    btn.innerText = "إرسال تقييم موظف جديد";
-}
